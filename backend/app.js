@@ -1,3 +1,5 @@
+// import {User, Password, Cluster, Database} from './data/acces';
+const Datas = require('./data/acces');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,11 +10,11 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-// mongoose.connect('',
-//   { useNewUrlParser: true,
-//     useUnifiedTopology: true })
-//   .then(() => console.log('Connexion à MongoDB réussie !'))
-//   .catch(() => console.log('Connexion à MongoDB échouée !'));
+mongoose.connect(`mongodb+srv://${Datas.User}:${Datas.Password}@${Datas.Cluster}/${Datas.Database}?retryWrites=true&w=majority`,
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,7 +27,7 @@ app.use(express.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauces', stuffRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
