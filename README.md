@@ -34,13 +34,13 @@ Pour le Back-end :
 
 * Pour pouvoir se connecter à la base de données MongoDB, il faut renseigner un fichier .env à la racine du backend :
 
-* DB_USER="nom d'utilisateur"
+  * DB_USER="nom d'utilisateur"
 
-* DB_PASS="mot de passe"
+  * DB_PASS="mot de passe"
 
-* DB_HOST="nom du cluster"
+  * DB_HOST="nom du cluster"
 
-* DB_NAME="nom de la base de données"
+  * DB_NAME="nom de la base de données"
 
 
 Le serveur se lance ensuite avec la commande "nodemon server"
