@@ -58,10 +58,7 @@ exports.GetAllThing = (req, res, next) => {
 exports.likeThing = ( req, res, next ) => {
     if (req.body.like === 1 ) {
       Sauce.updateOne({ _id: req.params.id }, {$inc : {likes: +1} , $push: { usersLiked: req.body.userId}})
-      .then(() => {
-      console.log(req.body);
-      res.status(200).json({ message: 'Objet modifié !'})
-    } )
+      .then(() => {res.status(200).json({ message: 'Objet modifié !'})} )
     .catch(error => {
       console.log(error);
       res.status(400).json({ error })
@@ -77,7 +74,6 @@ exports.likeThing = ( req, res, next ) => {
     else if (req.body.like === 0 ) {
        Sauce.findOne({_id: req.params.id})
        .then((result) => {
-         console.log(result);
         if (result.usersLiked.includes(req.body.userId)) { //si like
             Sauce.updateOne({_id: req.params.id}, {$pull: {usersLiked: req.body.userId}, $inc : {likes: -1} })
             .then(() => res.status(200).json({message: 'retrait du like'}))
