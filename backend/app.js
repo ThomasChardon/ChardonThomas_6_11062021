@@ -1,8 +1,5 @@
-// import {User, Password, Cluster, Database} from './data/acces';
-// const Datas = require('./data/acces');
 require('dotenv').config()
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express')
 const mongoose = require('mongoose');
 const path = require('path');
 
